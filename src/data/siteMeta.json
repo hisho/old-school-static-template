@@ -1,0 +1,9 @@
+{
+  "site": {
+    "title": "サイトのタイトル",
+    "description": "サイトの説明文",
+    "lang": "ja",
+    "url": "https://example.com/",
+    "locale": "ja_JP"
+  }
+}

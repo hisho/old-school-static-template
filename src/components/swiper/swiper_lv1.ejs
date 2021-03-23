@@ -1,0 +1,22 @@
+<%
+const _options = {
+  slides: [],
+	class: ''
+}
+const options = $options && deepmerge(_options, $options);
+%>
+
+<div class="swiper-lv1">
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<% options.slides.forEach((slide,index) => { %>
+				<div class="swiper-slide">
+					<%- index %>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+	<div class="swiper-pagination"></div>
+</div>

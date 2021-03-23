@@ -1,0 +1,75 @@
+<%# サイトの基本設定 %>
+<%# サイトの種類 %>
+<meta property="og:type" content="website">
+<%# サイトの言語 %>
+<meta property="og:locale" content="<%- SEO.locale() %>">
+<%# サイトのURl %>
+<meta property="og:url" content="<%- SEO.url() %>">
+<%# サイトの名前 %>
+<meta property="og:site_name" content="<%- SEO.name() %>">
+<%# 現在のページのタイトル %>
+<meta property="og:title" content="<%- SEO.title() %>">
+<%# 現在のページのサムネイル画像 %>
+<meta property="og:image" content="<%- SEO.url() %>assets/img/screenshot.png">
+<%# 現在のページの説明文 %>
+<meta property="og:description" content="<%- SEO.description(); %>">
+<%# Twitter関係 %>
+<%# ツイッターカードの種類 %>
+<% if(ogp.twitter.card) { %>
+	<meta name="twitter:card" content="<%- ogp.twitter.card %>">
+<% } %>
+<%# サイトのTwitterアカウントID %>
+<% if(ogp.twitter.site) { %>
+	<meta name="twitter:site" content="<%- ogp.twitter.site %>">
+<% } %>
+<%# Facebook関係 %>
+<%# サイトのFacebookのappID %>
+<% if(ogp.facebook.app_id) { %>
+	<meta property="fb:app_id" content="<%- ogp.facebook.app_id %>">
+<% } %>
+<%# サイトのFacebookのユーザーID %>
+<% if(ogp.facebook.admins) { %>
+	<meta property="fb:admins" content="<%- ogp.facebook.admins %>">
+<% } %>
+<%# サイトの連絡情報 %>
+<%# メールアドレス %>
+<% if(ogp.contact.email) { %>
+	<meta property="og:email" content="<%- ogp.contact.email %>">
+<% } %>
+<%# 電話番号 %>
+<% if(ogp.contact.phone_number) { %>
+	<meta property="og:phone_number" content="<%- ogp.contact.phone_number %>">
+<% } %>
+<%# FAX番号 %>
+<% if(ogp.contact.fax_number) { %>
+	<meta property="og:fax_number" content="<%- ogp.contact.fax_number %>">
+<% } %>
+<%# サイトの位置情報 %>
+<%# 国名 %>
+<% if(ogp.location.country_name) { %>
+	<meta property="og:country-name" content="<%- ogp.location.country_name %>">
+<% } %>
+<%# 都道府県 %>
+<% if(ogp.location.region) { %><
+<meta property="og:region" content="<%- ogp.location.region %>">
+<% } %>
+<%# 市区町村 %>
+<% if(ogp.location.locality) { %>
+	<meta property="og:locality" content="<%- ogp.location.locality %>">
+<% } %>
+<%# 住所 %>
+<% if(ogp.location.street_address) { %>
+	<meta property="og:street-address" content="<%- ogp.location.street_address %>">
+<% } %>
+<%# 郵便番号 %>
+<% if(ogp.location.postal_code) { %>
+	<meta property="og:postal-code" content="<%- ogp.location.postal_code %>">
+<% } %>
+<%# 緯度 %>
+<% if(ogp.location.latitude) { %>
+	<meta property="og:latitude" content="<%- ogp.location.latitude %>">
+<% } %>
+<%# 経度 %>
+<% if(ogp.location.longitude) { %>
+	<meta property="og:longitude" content="<%- ogp.location.longitude %>">
+<% } %>

@@ -1,0 +1,18 @@
+<%- _.layouts('head/schema', 'schema') %>
+<%
+const schemaGraph = [
+  schema.Organization(),
+	schema.WebSite(),
+	schema.CurrentWebSite(),
+	schema.BreadcrumbList()
+];
+page.FAQPage && schemaGraph.push(schema.FAQPage(page.FAQPage));
+%>
+<script type="application/ld+json">
+<%- JSON.stringify(
+	{
+		"@context": "https://schema.org",
+		"@graph": schemaGraph
+	});
+	%>
+</script>

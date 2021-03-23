@@ -1,0 +1,22 @@
+<% include( `./utilities/parameter.ejs`, {path, page} ) %>
+<% include( `./utilities/percentage.ejs`, {path, page} ) %>
+<% include( `./utilities/rem.ejs`, {path, page} ) %>
+<% include( `./hooks/usePage.ejs`, {path, page} ) %>
+<% include( `./hooks/useConfig.ejs`, {path, page} ) %>
+<% include( `./hooks/Company.ejs`, {path, page} ) %>
+<% include( `./hooks/Utilities.ejs`, {path, page} ) %>
+<% include( `./hooks/Picture.ejs`, {path, page} ) %>
+<% include( `./hooks/SEO.ejs`, {path, page} ) %>
+<%
+_.component = ($path, $name = null, $options = null) => {
+	return include(`./components/${$path ? `${$path}/` : ''}${$name ? $name : 'index'}.ejs`, {path, page, $options})
+}
+
+_.pages = ($path, $name = null, $options = null) => {
+	return include(`./pages/${$path ? `${$path}/` : ''}${$name ? $name : 'index'}.ejs`, {path, page, $options})
+}
+
+_.layouts = ($path, $name = null, $options = null) => {
+	return include(`./layouts/${$path ? `${$path}/` : ''}${$name ? $name : 'index'}.ejs`, {path, page, $options})
+}
+%>

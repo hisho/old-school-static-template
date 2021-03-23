@@ -1,0 +1,13 @@
+// line-heightが1の時と同じになるようにline-height分の差分を返す関数です
+// @param  {Number} $lineHeight lineHeightの値
+// @param  {Number} $fontSize   fontの値
+// @return {Number}             差分の数値
+@function clip-line-height($_lineHeight, $_fontSize) {
+  @if(unit($_lineHeight) != '') {
+    @error 'line-heightに単位を付けないでください';
+  } @else if(unit($_fontSize) != '') {
+    @error 'font-sizeに単位を付けないでください';
+  } @else {
+    @return ($_fontSize * $_lineHeight - $_fontSize) / 2;
+  }
+}

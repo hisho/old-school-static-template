@@ -1,0 +1,23 @@
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/png" href="<%- path %>favicon.png">
+	<link rel="apple-touch-icon" size="180x180" href="<%- path %>assets/img/apple-touch-icon.png">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no">
+	<%# google Analytics %>
+	<%# google TagManager %>
+	<title><%- SEO.title() %></title>
+	<% if(SEO.keywords()) { %>
+		<meta name="keywords" content="<%- SEO.keywords() %>">
+	<% } %>
+	<meta name="description" content="<%- SEO.description() %>">
+	<%- _.layouts('head/ogp'); %>
+	<script>document.documentMode && document.write('<script src="<%- path %>assets/js/ie.js<%- parameter(); %>"><\/script>');</script>
+	<script src="<%- path %>assets/js/gsap.js" async></script>
+	<script src="<%- path %>assets/js/vendor.js<%- parameter(); %>" async></script>
+	<script src="<%- path %>assets/js/main.js<%- parameter(); %>" defer></script>
+	<link rel="stylesheet" href="<%- path %>assets/css/utilities.css<%- parameter(); %>">
+	<link rel="stylesheet" href="<%- path %>assets/css/common.css<%- parameter(); %>">
+	<%- _.layouts('head/schema'); %>
+</head>

@@ -1,0 +1,53 @@
+@use '../../styles/foundations/_index' as *;
+
+.global_menu {
+  position: fixed;
+  top: rem(30);
+  right: rem(20);
+  width: rem(30);
+  height: rem(30);
+  transition: background-color .5s;
+  @apply z-menu;
+  &--line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: percentage(1);
+    height: 4px;
+    transition: background-color .5s;
+    transform: translate(-50%,-50%);
+    @apply bg-secondary-black;
+  }
+  &::before,&::after {
+    content: '';
+    transition: margin-top .25s .25s, transform .25s;
+    @extend .global_menu--line;
+  }
+  &::before {
+    margin-top: rem(10,-1);
+  }
+  &::after {
+    margin-top: rem(10);
+  }
+}
+
+
+.global_menu[aria-expanded='true'] {
+  .global_menu {
+    &--line {
+      background: transparent;
+    }
+  }
+  &::before, &::after {
+    margin-top: 0;
+    transition: margin-top .25s, transform .25s .25s;
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

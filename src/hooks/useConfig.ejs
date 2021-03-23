@@ -1,0 +1,8 @@
+<%
+ Config = {
+	  merge: ($config, $array) => {
+	    if(!$array) return $config;
+	    return deepmerge($config, $array);
+	  }
+ }
+%>

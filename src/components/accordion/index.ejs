@@ -1,0 +1,15 @@
+<%
+const _options = {
+	name: 'accordion'
+}
+const options = Config.merge(_options, $options);
+%>
+
+<div class="Accordion <%- options.name %>" data-<%- options.name %>>
+	<div class="AccordionSummary <%- options.name + '--summary' %>" role="button" tabindex="0" aria-expanded="false">
+		<%- AccordionSummary && AccordionSummary(__append); %>
+	</div>
+	<div class="AccordionDetails <%- options.name + '--details' %>" role="region" aria-hidden="true">
+		<%- AccordionDetails && AccordionDetails(__append); %>
+	</div>
+</div>

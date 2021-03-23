@@ -1,0 +1,15 @@
+<%
+const randomText = [...Array(5)].map(() => _.shuffle([..."abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"]));
+
+parameter = () => {
+	const date = new Date();
+	const year = [...String(date.getFullYear())].slice(-2).join('');
+	const month = date.getMonth() + 1;
+	const day = date.getDate();
+	const hours = date.getHours();
+	const minutes = date.getMinutes();
+	const randomString = (number) => randomText.map(n => n[number]).join('');
+	return `?v=${randomString(year)}${randomString(month)}${randomString(day)}${randomString(hours)}${randomString(minutes)}`;
+}
+%>
+

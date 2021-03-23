@@ -1,0 +1,11 @@
+<%
+const _options = {
+	name: 'modal_button',
+	id: ''
+}
+const options = Config.merge(_options, $options);
+%>
+
+<button data-modal-trigger="<%- options.id %>">
+	<%- ModalButton && ModalButton(__append); %>
+</button>

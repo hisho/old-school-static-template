@@ -1,0 +1,17 @@
+@use 'hacks' as hack;
+
+@mixin hover {
+  &:focus {
+    @content;
+  }
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+  @include hack.ie-hack {
+    &:hover, &:focus {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<% const page = initPage('111111'); %>
+<% Layout = (__append) => { %>
+
+	<main class="main" id="main">
+		<div class="wrapper">
+			<%- path %>
+			<%- rem(1); %>
+			<%- percentage(1 / 3); %>
+			<%- parameter(); %>
+			<%- _.component('breadcrumbs', null) %>
+			<div class="relative w-full max-w-2xl">
+				<div class="hidden sm:block" aria-hidden="true" style="padding-top: <%- percentage(630 / 1200) %>"></div>
+				<div class="sm:hidden" aria-hidden="true" style="padding-top: <%- percentage(630 / 840) %>"></div>
+				<%- _.component('picture', null, {name: 'screenshot.png'}) %>
+			</div>
+			<% AccordionSummary = (__append) => { %>
+				タイトルあああああああああ
+			<% } %>
+			<% AccordionDetails = (__append) => { %>
+				内容<br>
+				内容<br>
+				内容<br>
+			<% } %>
+			<%- _.component('accordion') %>
+			<% ModalContent = (__append) => { %>
+				<div class="bg-white">
+					モーダルの中身
+				</div>
+			<% } %>
+			<% ModalButton = (__append) => { %>
+				<span class="text-white">
+					モーダルのボタン
+				</span>
+			<% } %>
+			<%- _.component('modal', null, {id: 'test'}) %>
+			<div class="bg-black">
+				<%- _.component('modal', 'button', {id: 'test'}) %>
+			</div>
+			<%- Page.title(page) %><br>
+			<%- Page.permalink(page) %><br>
+			<%- Page.getTitle('1') %><br>
+			<%- Page.getPermalink('1') %><br>
+			<%- Page.getPage('1').title %><br>
+			<%- Page.getChildrenTitle('2') %><br>
+			<%- Page.getChildrenPermalink('2') %><br>
+			<%- Page.getChildrenPages('2')[0].title %><br>
+			<%- Page.getParentPage('2.1').title %><br>
+			<%- Page.getParentPages('2.1')[0].title %><br>
+			<%- _.component('swiper','swiper_lv1',{slides: _.range(0,10)}) %>
+			<%- _.component('swiper','swiper_lv1',{slides: _.range(0,20)}) %>
+			<%- _.component('swiper','swiper_lv1',{slides: _.range(0,30)}) %>
+			<%- _.component('swiper','swiper_lv1',{slides: _.range(0,40)}) %>
+		</div>
+	</main>
+
+<% } %>
+<%- include(`${includePath}layouts/index`, {page, path, Layout}) %>

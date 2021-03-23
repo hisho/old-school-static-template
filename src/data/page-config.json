@@ -1,0 +1,39 @@
+{
+  "pages": [
+    {
+      "page_id": "1",
+      "title": "トップページ",
+      "description": "",
+      "permalink": "",
+      "top_page": true
+    },
+    {
+      "page_id": "2",
+      "title": "仮装",
+      "description": "",
+      "permalink": "lower/",
+      "parent_id": "1"
+    },
+    {
+      "page_id": "2.1",
+      "title": "下層の下層",
+      "description": "",
+      "permalink": "lower/low/",
+      "parent_id": "2"
+    },
+    {
+      "page_id": "999999",
+      "description": "",
+      "title": "お探しのページはありません。",
+      "permalink": "",
+      "parent_id": "1"
+    },
+    {
+      "page_id": "111111",
+      "title": "テンプレート",
+      "description": "テンプレートページの説明文",
+      "permalink": "template/",
+      "parent_id": "1"
+    }
+  ]
+}
