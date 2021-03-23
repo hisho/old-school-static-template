@@ -1,0 +1,81 @@
+<%
+Page = {
+	//pageのobjectからtitleを返す関数
+	title: ($pageObject = page) => {
+		return $pageObject.title;
+	},
+
+	//pageのobjectからpermalinkを返す関数
+	permalink: ($pageObject = page) => {
+		return $pageObject.permalink;
+	},
+
+	//$pageObjectからdescriptionを返す関数
+	description: ($pageObject = page) => {
+		const description = $pageObject.description;
+		if (!!description) {
+			return description;
+		} else {
+			return '';
+		}
+	},
+
+	//$pageObjectからkeywordsを返す関数
+	keywords: ($pageObject = page) => {
+		const keywords = $pageObject.keywords;
+		if (!!keywords) {
+			return keywords;
+		} else {
+			return '';
+		}
+	},
+
+	//pageのobjectがtop_pageかどうか返す関数
+	isTopPage: ($pageObject = page) => {
+		return !!$pageObject.top_page;
+	},
+	//page_idからtitleを返す関数
+	getTitle: ($page_id) => {
+		return Page.getPage($page_id).title;
+	},
+	//page_idからpermalinkを返す関数
+	getPermalink: ($page_id) => {
+		return Page.getPage($page_id).permalink;
+	},
+	//page_idからpageのobjectを返す関数
+	getPage: ($page_id) => {
+		return Page.findPage('page_id', $page_id);
+	},
+	//$keyから$valueのpageのobjectを返す関数
+	findPage: ($key, $value) => {
+		return pages.find(page => page[$key] === $value) ?? new Error(`"${$value}"の${$key}は存在しません。`);
+	},
+	//parent_idからpageのobjectが入った配列を返す関数
+	getChildrenPages: ($parent_id) => {
+		return pages.filter(page => page.parent_id === $parent_id);
+	},
+	//parent_idからpageのtitleが入った配列を返す関数
+	getChildrenTitle: ($parent_id) => {
+		return Page.getChildrenPages($parent_id).map(n => n.title);
+	},
+	//parent_idからpageのpermalinkが入った配列を返す関数
+	getChildrenPermalink: ($parent_id) => {
+		return Page.getChildrenPages($parent_id).map(n => n.permalink);
+	},
+	//$page_idからpageのobjectを返す関数
+	getParentPage: ($page_id) => {
+		return Page.getPage(Page.getPage($page_id).parent_id);
+	},
+	//$page_idからpageの親のobjectが入った配列を返す関数
+	getParentPages: ($page_id) => {
+		const parentPages = [];
+		let parentId = Page.getPage($page_id).parent_id;
+		while (parentId) {
+			const parentPage = Page.getPage(parentId)
+			parentPages.unshift(parentPage);
+			parentId = parentPage.parent_id;
+		}
+		return parentPages;
+	}
+}
+%>

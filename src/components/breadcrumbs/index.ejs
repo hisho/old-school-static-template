@@ -1,0 +1,23 @@
+<%
+const _options = {
+	name: 'breadcrumbs',
+	class: ''
+}
+const options = Config.merge(_options, $options);
+const parentPages = Page.getParentPages(page.page_id);
+%>
+
+<nav class="breadcrumbs" aria-label="パンくずリスト" data-<%- options.name %>>
+	<ol class="breadcrumbs--list">
+		<% parentPages.forEach((parentPage) => { %>
+			<li class="breadcrumbs--item">
+				<a class="breadcrumbs--link" href="<%- path %><%- !parentPage.top_page ? Page.permalink(parentPage) : ''; %>">
+					<span class="breadcrumbs--text"><%- !parentPage.top_page ? Page.title(parentPage) : 'TOP' %></span>
+				</a>
+			</li>
+		<% }) %>
+		<li class="breadcrumbs--item" aria-current="page">
+			<span class="breadcrumbs--text"><%- Page.title(page) %></span>
+		</li>
+	</ol>
+</nav>

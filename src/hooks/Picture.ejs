@@ -1,0 +1,87 @@
+<%
+Picture = {
+	extList: ['png', 'jpg', 'webp'],
+	retinaList: ['1x', '2x'],
+	list: ['pc', 'sp'],
+	config: {},
+	path: null,
+	ext: null,
+	name: null,
+
+	getConfig: function ($path, $name, $extName) {
+		this.path = $path;
+		this.ext = $extName;
+		const reg = new RegExp(`(\.${this.ext})$`)
+		this.name = $name.replace(reg, '');
+		this.list.forEach(($item) => {
+			this.retinaList.forEach(($retina) => {
+				this.extList.forEach(($ext) => {
+					this.config = deepmerge(this.config, {
+						[$item]: {
+							[$retina]: {
+								[$ext]: this.test($item, $retina, $ext)
+							}
+						}
+					})
+				})
+			})
+		})
+		return this.config;
+	},
+
+	test: function ($item, $retina, $ext) {
+		const prefix = this.addPrefix($item);
+		const retina = this.addRetina($retina);
+		const ext = this.addExt($ext);
+		if (this.ext === $ext || $ext === 'webp') {
+			return this.path + prefix + this.name + retina + ext;
+		} else {
+			return null;
+		}
+	},
+
+	addExt: function ($ext) {
+		if (this.ext === $ext) {
+			return '.' + $ext;
+		} else {
+			return '.' + this.ext + '.' + $ext;
+		}
+	},
+
+	addRetina: function ($retina) {
+		if ($retina === '1x') {
+			return '';
+		} else {
+			return '@' + $retina;
+		}
+	},
+
+	addPrefix: function ($prefix) {
+		if ($prefix === 'pc') {
+			return '';
+		} else {
+			return $prefix + '_';
+		}
+	},
+
+
+	getAnyImage: function ($config, $test, $retina, $ext) {
+		if ($config[$test][$retina][$ext]) {
+			return path + $config[$test][$retina][$ext] + parameter();
+		} else {
+			return null
+		}
+	},
+
+	getSrcsetImages: function ($config, $test, $retina, $ext) {
+		if ($retina) {
+			const $list = this.retinaList.map((retinaItem) => {
+			  return Picture.getAnyImage($config,$test, retinaItem, $ext) + ' ' + retinaItem
+			})
+			return $list.join(',');
+		} else {
+			return Picture.getAnyImage($config,$test, '1x', $ext)
+		}
+	}
+}
+%>

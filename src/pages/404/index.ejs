@@ -1,0 +1,41 @@
+<% const page = initPage('999999'); %>
+<% Layout = (__append) => { %>
+
+	<main class="main" id="main">
+		<%- path %>
+		<div>
+			<div class="container">
+				<section class="pt-16 sm:pt-32 pb_lowerdir">
+					<div class="text-center">
+						<div class="text-primary-gray flex justify-center">
+							<svg class="fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" width="250" height="117.406"
+							     viewBox="0 0 250 117.406">
+								<g id="Call_to_Action" data-name="Call to Action" transform="translate(-468 -60.477)">
+									<path d="M0,83.744,37.356,1.026H55.213L17.447,83.744H46.593V50.493H62.6V83.744h9.031v15.6H62.6v17.241H46.593V99.343H0ZM94.212,33.251c0-10.673,3.489-18.883,9.852-24.631a32.284,32.284,0,0,1,43.924,0c6.158,5.747,9.442,13.957,9.647,24.631v50.9c-.205,10.673-3.489,18.883-9.647,24.631a31.346,31.346,0,0,1-22.167,8.621,32.205,32.205,0,0,1-21.757-8.621q-9.852-8.621-9.852-24.631Zm47.619,1.026c-.205-11.7-5.542-17.652-15.8-17.857-10.263.205-15.6,6.158-15.8,17.652V83.128c.205,11.7,5.542,17.652,15.8,17.652,10.263-.205,15.6-5.952,15.8-17.652Zm36.535,49.466L215.722.821H233.58L195.813,83.744h29.146V50.493h16.01V83.744H250v15.6h-9.031v17.241h-16.01V99.343H178.366v-15.6Z"
+									      transform="translate(468 60.477)"/>
+								</g>
+							</svg>
+						</div>
+						<p class="font-bold text-18 sm:text-24 mt-14 sm:mt-28">お探しのページは見つかりませんでした</p>
+						<p class="font-medium leading-snug mt-9 sm:mt-18">お探しのページはすでに削除されている・公開期間が終わっている・<br
+								class="hidden sm:block">
+							アクセスしたアドレスが異なっているなどの理由で見つかりませんでした。</p>
+						<div class="mt-17 sm:mt-34"><a href="<%- Page.permalink(1) %>">
+								<span class="border-2 border-primary-red border-solid text-primary-red text-14 font-bold px-7 py-3 sm:p-4 inline-flex justify-center items-center transition-colors duration-300 ease-out hover:bg-primary-red hover:text-white focus:bg-primary-red focus:text-white">
+								<span class="pr-5">ホームへ戻る</span>
+								<svg class="fill-current stroke-current" xmlns="http://www.w3.org/2000/svg" width="4.95" height="8.486" viewBox="0 0 4.95 8.486">
+									<g transform="translate(-158.257 -18.257)">
+										<line x2="5" transform="translate(158.964 18.964) rotate(45)" stroke-linecap="round" stroke-width="1"/>
+										<line x2="5" transform="translate(158.964 26.036) rotate(-45)" stroke-linecap="round" stroke-width="1"/>
+									</g>
+								</svg>
+								</span>
+							</a></div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+<% } %>
+<%- include(`${includePath}layouts/index`, {page, path, Layout}) %>

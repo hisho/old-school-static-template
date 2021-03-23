@@ -1,0 +1,29 @@
+<%
+Company = {
+
+	reservation: function ($name) {
+		return company.reservation[$name];
+	},
+
+	presentReservation: function () {
+		return this.reservation('present');
+	},
+
+	documentReservation: function () {
+		return this.reservation('document');
+	},
+
+	tourReservation: function () {
+		return this.reservation('tour');
+	},
+
+	contact: function () {
+		return company.contact;
+	},
+
+	tel: function () {
+		return company.tel;
+	}
+
+}
+%>

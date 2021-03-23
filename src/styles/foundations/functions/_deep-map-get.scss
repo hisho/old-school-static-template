@@ -1,0 +1,13 @@
+// 深い階層のmapの値を取得して返す関数です。
+// @param  {map} $map   map本体
+// @param  {map} $keys  mapのkey
+// @return {map}        指定したmapのkey
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    @if (not map-has-key($map, $key)) {
+      @return null;
+    }
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

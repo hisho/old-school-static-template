@@ -1,0 +1,29 @@
+@use 'is-array';
+// 数値をpxに変換する関数です
+// @param  {Number} $arget          pxにしたい数値
+// @param  {Number} $threshold [1]  しきい値
+// @return {Number}                 数値にpxが付いた数値を返します
+@function _px($target, $threshold) {
+  @if(unit($target) != '') {
+    @error 'pxにしたい数値に単位を付けないでください';
+  } @else if(unit($threshold) != '') {
+    @error 'しきい値に単位を付けないでください'
+  } @else if($target == 0) {
+    @return $target;
+  } @else {
+    @return (($target * $threshold) * 1px);
+  }
+}
+
+//第一引数に配列を渡すことが可能になった
+@function px($target, $threshold: 1) {
+  @if(is-array.is_array($target)) {
+    $new_px_array: ();
+    @each $target_item in $target {
+      $new_px_array: append($new_px_array, _px($target_item, $threshold));
+    }
+    @return $new_px_array;
+  } @else {
+    @return _px($target,$threshold);
+  }
+}

@@ -1,0 +1,29 @@
+@use 'is-array';
+// 数値をemに変換する関数です
+// @param  {Number} $target           emにしたい数値
+// @param  {Number} $parentValue [16] しきい値
+// @return {Number}                   数値にremが付いた数値を返します
+@function _em($target, $parentValue) {
+  @if(unit($target) != '') {
+    @error 'emにしたい数値に単位を付けないでください';
+  } @else if(unit($parentValue) != '') {
+    @error '親要素の数値に単位を付けないでください'
+  } @else if($target == 0) {
+    @return $target;
+  } @else {
+    @return (($target / 16) * 1em);
+  }
+}
+
+//第一引数に配列を渡すことが可能になった
+@function em($target, $parentValue: 16) {
+  @if(is-array.is_array($target)) {
+    $new_em_array: ();
+    @each $target_item in $target {
+      $new_em_array: append($new_em_array, _em($target_item, $parentValue));
+    }
+    @return $new_em_array;
+  } @else {
+    @return _em($target,$parentValue);
+  }
+}

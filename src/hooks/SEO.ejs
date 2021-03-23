@@ -1,0 +1,41 @@
+<%
+SEO = {
+  //titleの内容を返す関数
+	title: ($pageObject = page) => {
+		if (Page.isTopPage($pageObject)) {
+			return site.title + ' | ' + Page.title($pageObject);
+		} else {
+			return Page.title($pageObject) + ' | ' + site.title;
+		}
+	},
+
+	//descriptionの内容を返す関数
+	description: ($pageObject = page) => {
+		if (Page.isTopPage($pageObject)) {
+			return site.description;
+		} else {
+			return Page.description($pageObject)
+		}
+	},
+
+	//keywordsを返す関数
+	keywords: ($pageObject = page) => {
+	  return Page.keywords($pageObject);
+	},
+
+	//サイトのURLを返す関数
+	url: () => {
+	  return site.url;
+	},
+
+	//サイト名を返す関数
+	name: () => {
+	  return site.title;
+	},
+
+	//サイトのlocaleを返す関数
+	locale: () => {
+	  return site.locale;
+	}
+}
+%>

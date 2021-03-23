@@ -1,0 +1,10 @@
+@use '../../../data/variables.json' as variables;
+
+@mixin media($breakpoint) {
+  $has-breakpoint: map_has_key(variables.$breakpoints,$breakpoint);
+  @if($has-breakpoint) {
+    @screen #{$breakpoint} {
+      @content
+    }
+  }
+}

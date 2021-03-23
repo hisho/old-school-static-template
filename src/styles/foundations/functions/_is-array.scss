@@ -1,0 +1,6 @@
+// 値が2つ以上の配列かどうか判定する関数
+// @param  {array} $_list 配列か判定したい値
+// @return {boole}        値が2つ以上の配列ならtrue
+@function is_array($_list) {
+  @return type-of($_list) == list or type-of($_list) == arglist;
+}

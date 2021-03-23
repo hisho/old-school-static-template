@@ -1,0 +1,103 @@
+<%
+schema = {
+
+	//組織
+	Organization: () => {
+		return {
+			"@type": "Organization",
+			"@id": `${SEO.url()}#organization`,
+			"url": `${SEO.url()}`,
+			"name": `${SEO.name()}`,
+			"sameAs": []
+		}
+	},
+
+	//サイトリンク検索ボックス
+	WebSite: () => {
+		return {
+			"@type": "WebSite",
+			"@id": `${SEO.url()}#website`,
+			"url": SEO.url(),
+			"name": SEO.name(),
+			"publisher": {
+				"@id": `${SEO.url()}#organization`
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": `${SEO.url()}?s={search_term_string}`,
+				"query-input": "required name=search_term_string"
+			}
+		}
+	},
+
+	//現在のページの情報
+	CurrentWebSite: () => {
+		return {
+			"@type": "WebPage",
+			"@id": `${SEO.url()}${Page.permalink()}#webpage`,
+			"url": `${SEO.url()}${Page.permalink()}`,
+			"inLanguage": "jp",
+			"name": SEO.title(),
+			"isPartOf": {
+				"@id": `${SEO.url()}${Page.permalink()}#website`
+			},
+			"image": {
+				"@type": "ImageObject",
+				"@id": `${SEO.url()}${Page.permalink()}#primaryimage`,
+				"url": `${SEO.url()}assets/img/screenshot.png`
+			},
+			"primaryImageOfPage": {
+				"@id": `${SEO.url()}${Page.permalink()}#primaryimage`
+			},
+			"description": SEO.description(),
+			"breadcrumb": {
+				"@id": `${SEO.url()}${Page.permalink()}#breadcrumblist`
+			}
+		}
+	},
+
+	//パンくず
+	BreadcrumbList: () => {
+		const parentPages = Page.getParentPages(page.page_id);
+		parentPages.push(page);
+		const BreadcrumbList = parentPages.map((item, index) => {
+			return {
+				"@type": "ListItem",
+				"position": index + 1,
+				"item": {
+					"@type": "WebPage",
+					"@id": `${SEO.url()}${item.permalink}`,
+					"url": `${SEO.url()}${item.permalink}`,
+					"name": `${item.top_page ? SEO.name() : item.title}`
+				}
+			}
+		})
+		return {
+			"@type": "BreadcrumbList",
+			"@id": `${SEO.url()}${Page.permalink()}#breadcrumblist`,
+			"itemListElement": BreadcrumbList
+		}
+	},
+
+
+	//Q&A
+	FAQPage: (FAQList) => {
+		const FAQLists = FAQList.map((FAQItem) => {
+			return {
+				"@type": "Question",
+				"name": FAQItem.name,
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": FAQItem.text
+				}
+			}
+		})
+		return {
+			"@type": "FAQPage",
+			"@id": `${SEO.url()}${Page.permalink()}#FAQPage`,
+			"mainEntity": FAQLists
+		}
+	}
+
+}
+%>

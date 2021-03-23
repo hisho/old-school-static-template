@@ -1,0 +1,10 @@
+<% const page = initPage('1'); %>
+<% Layout = (__append) => { %>
+
+	<main class="main" id="main">
+		<%- path %>
+		<%- Page.isTopPage(page); %>
+	</main>
+
+<% } %>
+<%- include(`${includePath}layouts/index`, {page, path, Layout}) %>

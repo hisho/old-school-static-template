@@ -1,0 +1,8 @@
+{
+  "reject": [
+    "swiper",
+    "tailwindcss",
+    "terser-webpack-plugin",
+    "webpack"
+  ]
+}

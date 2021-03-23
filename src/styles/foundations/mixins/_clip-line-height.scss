@@ -1,0 +1,17 @@
+// beforeを消費してline-heightを引くmixin
+// @param  {$_lineHeight}     line-height
+// @param  {$capital-letter}  capital-letter フォントによって変わる値たいてい.75でいけそう？
+@mixin clip-line-height($_lineHeight, $capital-letter: .75) {
+  &::before,&::after {
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+  }
+  &::before {
+    margin-top: (($capital-letter - $_lineHeight) * .5em);
+  }
+  &::after {
+    margin-bottom: (($capital-letter - $_lineHeight) * .5em);
+  }
+}

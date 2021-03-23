@@ -1,0 +1,21 @@
+<%- include( `../_functions`, {path, page} ) %>
+<!doctype html>
+<html lang="<%- site.lang %>">
+<%- _.layouts('head'); %>
+<body>
+<%# google TagManager(no script) %>
+<a class="sr-only focus:not-sr-only focus:absolute focus:z-main" href="#main" id="ContentsSkip">メインコンテンツにスキップする</a>
+<div class="absolute inset-0 h-screen w-full pointer-events-none" id="box" aria-hidden="true"></div>
+<%- _.layouts('header'); %>
+<%- _.layouts('globalNavigation', 'menu'); %>
+<%- _.layouts('GlobalNavigation', 'mobile'); %>
+<%- _.layouts('GlobalNavigation', 'desktop'); %>
+
+<%- Layout && Layout(__append) %>
+
+<%- _.layouts('footer'); %>
+<button id="ToTopButton" aria-labelledby="ToTopButtonText" type="button">
+	<span id="ToTopButtonText" class="sr-only">トップに戻る</span>
+</button>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "breakpoints": {
+    "xs": 600,
+    "sm": 769,
+    "md": 1000,
+    "lg": 1200,
+    "xl": 1366
+  },
+  "colors": {
+    "primary": {
+      "black": "#1a202c",
+      "gray": "#eceff6"
+    },
+    "secondary": {
+      "navy": "#0c5fac",
+      "black": "#032142"
+    }
+  },
+  "fontFamily": {
+    "notosans": ["Noto Sans JP", "sans-serif"],
+    "notoserif": ["Noto Serif JP", "serif"]
+  },
+  "zIndex": {
+    "menu": 600,
+    "globalNavigation": 500,
+    "modal": 400,
+    "header": 200,
+    "main": 1,
+    "back": -1
+  }
+}

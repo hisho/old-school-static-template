@@ -1,0 +1,28 @@
+<%
+const _options = {
+	name: '',
+	path: Page.permalink(page),
+	sp: true,
+	alt: '',
+	media: 'sm',
+	lazy: true,
+	class: '',
+	style: '',
+	retina: true
+}
+
+const options = Config.merge(_options, $options);
+const ext = options.name.replace(/^.+\./, '');
+const currentPath = `assets/img/${options.path}`;
+const picture = Picture.getConfig(currentPath, options.name, ext);
+const mediaQuery = (variables.breakpoints[options.media] / 16) - 0.0011;
+%>
+
+<picture>
+	<% if(options.sp) { %>
+		<source media="(max-width: <%- mediaQuery %>em)" srcset="<%- Picture.getSrcsetImages(picture, 'sp', options.retina, 'webp') %>" type="image/webp">
+		<source media="(max-width: <%- mediaQuery %>em)" srcset="<%- Picture.getSrcsetImages(picture, 'sp', options.retina, ext) %>">
+	<% } %>
+	<source srcset="<%- Picture.getSrcsetImages(picture, 'pc', options.retina, 'webp') %>" type="image/webp"/>
+	<img class="img <%- options.class %>" style="<%- options.style %>" src="<%- Picture.getAnyImage(picture, 'pc', '1x', ext) %>" <%- options.retina ? `srcset="${Picture.getSrcsetImages(picture, 'pc', options.retina, ext)}"` : '' %>alt="<%- options.alt %>" loading="<%- options.lazy ? 'lazy' : 'eager' %>">
+</picture>

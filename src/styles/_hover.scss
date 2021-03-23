@@ -1,0 +1,8 @@
+@use 'src/styles/foundations/_index' as *;
+
+.hover\:primary {
+  transition: opacity .5s ease-out;
+  @include hover {
+    opacity: .5;
+  }
+}

@@ -1,0 +1,32 @@
+.modal {
+  $this: &;
+  display: none;
+  &.is-open {
+    display: block;
+  }
+  &[aria-hidden='false'] {
+    #{$this}__overlay {
+      animation: fadeIn .3s cubic-bezier(0,0,.2,1);
+    }
+    //#{$this}__container {
+    //  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+    //}
+  }
+  &[aria-hidden='true'] {
+    #{$this}__overlay {
+      animation: fadeOut .3s cubic-bezier(0,0,.2,1);
+    }
+    //#{$this}__container {
+    //  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+    //}
+  }
+  &__overlay {
+    backdrop-filter: blur(3px);
+    background-color: rgba(0,0,0,.4);
+    @apply fixed inset-0 flex items-center justify-center cursor-pointer;
+    @apply z-modal;
+  }
+  &__container {
+    @apply cursor-default;
+  }
+}

@@ -1,0 +1,19 @@
+<%
+const _options = {
+	name: 'modal',
+	id: ''
+}
+const options = Config.merge(_options, $options);
+%>
+
+<div class="modal" id="<%- options.id %>" aria-hidden="true">
+	<div class="modal__overlay" tabindex="-1" data-modal-close>
+		<div role="dialog" aria-modal="true" aria-labelledby="<%- options.id %>-title">
+			<p class="sr-only" id="<%- options.id %>-title">タイトル</p>
+			<div class="cursor-default">
+				<%- ModalContent && ModalContent(__append); %>
+			</div>
+			<button data-modal-close aria-label="Close this dialog window">閉じる</button>
+		</div>
+	</div>
+</div>

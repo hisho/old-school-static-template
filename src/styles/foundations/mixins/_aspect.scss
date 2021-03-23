@@ -1,0 +1,16 @@
+// 擬似要素でアスペクト比の領域を確保するmixin
+// @param  {$width}         横の値
+// @param  {$height}        縦の値
+// @param  {$pseudoElement} 消費する疑似要素 before or after
+@mixin aspect($width, $height, $pseudoElement: before) {
+  $pseudoElements: before, after;
+  $checkPseudoElementName: index($pseudoElements, $pseudoElement);
+  @if ($checkPseudoElementName == null) {
+    @error '#{$pseudoElement}は無効な値です。'
+  }
+  &::#{$pseudoElement} {
+    display: block;
+    padding-top: percentage($width/$height);
+    content: '';
+  }
+}
