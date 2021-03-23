@@ -1,0 +1,1 @@
+# old-school-static-template
